@@ -4,19 +4,19 @@ This repository holds the ViriCiti Example App starter kit.
 We've set up the full project for you with Webpack, Node.js, Express, Socket.io, React.js and Less. This should provide you with the tools to build a cool web app!
 
 ## Getting Started
-To get started open up your terminal and clone this repository
+First, fork the repository at:
 
-`git clone https://github.com/viriciti/assignment.git`
+`https://github.com/viriciti/assignment`
+
+Then open up your terminal and clone the forked repository
+
+<sup>Replace [YOUR_USERNAME] with your name</sup>
+
+`git clone https://github.com/[YOUR_USERNAME]/assignment.git`
 
 Enter the directory
 
 `cd assignment`
-
-Create your branch
-
-<sup>Replace [YOURNAME] with your name</sup>
-
-`git checkout -b feature/[YOURNAME]`
 
 Install all the dependencies
 
