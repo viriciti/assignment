@@ -1,8 +1,8 @@
 {
-  "name": "viri-example-app",
+  "name": "ViriCiti_Assignment",
   "version": "0.0.0",
-  "description": "Full webpack configured React project with express server",
-  "main": "index.js",
+  "description": "Full webpack configured Node.js, Express, Socket.io, React and Less project",
+  "main": "./src/server/index.js",
   "scripts": {
     "start": "NODE_ENV=development && nodemon src/server/main.js",
     "build": "NODE_ENV=production && npm run clean && webpack -p",

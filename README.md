@@ -6,11 +6,11 @@ We've set up the full project for you with Webpack, Node.js, Express, Socket.io,
 ## Getting Started
 To get started open up your terminal and clone this repository
 
-`git clone https://git.viriciti.com/davebitter/viri-example-app.git`
+`git clone https://github.com/viriciti/assignment.git`
 
 Enter the directory
 
-`cd viri-example-app`
+`cd assignment`
 
 Create your branch
 
