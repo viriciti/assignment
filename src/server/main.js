@@ -8,7 +8,7 @@ const socketio = require('socket.io')
 const creatVehicle = require('./lib/vehicle')
 
 const app = express()
-const server = app.listen(8888)
+const server = http.Server(app)
 const io  = socketio.listen(server)
 
 // Start vehicle data
@@ -87,4 +87,4 @@ else {
 }
 
 const port = config.server.port
-app.listen(process.env.PORT || port, () => console.log(`Server listening on port ${port}`))
+server.listen(process.env.PORT || port, () => console.log(`Server listening on port ${port}`))

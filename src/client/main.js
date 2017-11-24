@@ -5,21 +5,19 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './less/app.less'
 
-import getSocket from "./singletons/getSocket"
+import socket from "./lib/socket"
 
 import App from './components/App'
 
 const render = Component => {
 	ReactDOM.render(
 		<AppContainer>
-			<App />
+			<App socket={socket} />
 		</AppContainer>,
 		document.getElementById('root')
 	)
 }
 
-// Get new socket
-const socket = getSocket()
 socket.once('ready', () => {
 	console.log('Socket ready')
 	render(App)
