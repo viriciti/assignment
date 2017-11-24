@@ -36,7 +36,7 @@ We have provided you with a starter kit that receives vehicle data over a socket
 
 ### The data
 
-```JSON
+```JS
 {
   time: 1511512585495,
   energy: 85.14600000000002,
