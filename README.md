@@ -56,19 +56,19 @@ We have provided you with a starter kit that receives vehicle data over a socket
 
 We would like to see how you can visualize this data for the user. What does the user want to see and how are you going to display this. Give the user real-time insights into his/her vehicle.
 
-We highly encourage you to use your creativity in this assingment. We do however have some requirements it needs to meet.
+We highly encourage you to use your creativity in this assingment. However, we do have some requirements it needs to meet.
 
 ### The requirements
 Your app needs to at least
 * provide the user with useful insights in data through data visualizations (e.g. D3.js)
 * be modular (in React.js components)
-* be coded re-usable and DRY (Don't Repeat Yourself)
+* be have re-usable components and is coded DRY (Don't Repeat Yourself)
 * be fully responsive and mobile friendly
 * use Less in a structured way for styles
 
 #### Up for more?
 Cool! You could extend the app's functionality by:
-* Enrich dataset with diffrent data sources (e.g. weather API)
+* Enrich dataset with different data sources (e.g. weather API)
 * Optimize page loading (perfomance)
 * Global state management
 * Service workers
