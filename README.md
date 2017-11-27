@@ -62,7 +62,7 @@ We highly encourage you to use your creativity in this assingment. However, we d
 Your app needs to at least
 * provide the user with useful insights in data through data visualizations (e.g. D3.js)
 * be modular (in React.js components)
-* have re-usable components and is coded DRY (Don't Repeat Yourself)
+* have re-usable components and be coded DRY (Don't Repeat Yourself)
 * be fully responsive and mobile friendly
 * use Less in a structured way for styles
 
