@@ -36,12 +36,12 @@ We have provided you with a starter kit that receives vehicle data in the front-
 1. Doing the assignment focused on **_front-end_**
 1. Doing the assignment focused on **_back-end_**
 
-More on this later. 
+More on this later.
 
 We've provided you with a few parameters:
 
 ### The data
-The assignment is based on a vehicle data generator. A stream of objects that look like this:
+The assignment is based on a vehicle data generator. A stream of objects that looks like this:
 
 ```JS
 {
@@ -91,19 +91,21 @@ The **Vehicle** data generator in the example application (in `src/server/lib/Ve
 
 ![Architecture before and after](images/architecture.png)
 
-Move the data generator from `src/server/lib/vehicle.js`, which is now a node module included in the HTTP server, to another process: a TCP server. For the HTTP server to keep receiving the vehicle data, it needs to connect to this new TCP server that is running the `Vehicle data generator`. To make it a bit more interesting, the port on the TCP server is an arbitrary port, so you probably want to make use of some sort of service discovery. [Consul](www.consul.io) may be a good choice, but [etcd](https://coreos.com/etcd/) is perfect too.
+Move the data generator from `src/server/lib/vehicle.js`, which is now a node module included in the HTTP server, to another process: a TCP server. For the HTTP server to keep receiving the vehicle data, it needs to connect to  (as a TCP client) this new TCP server that is running the _vehicle data generator_. To make it a bit more interesting, the port on the TCP server should be an arbitrary port, so you will need to make use of some sort of service discovery. i.e. [Consul](www.consul.io) may be a good choice, but [etcd](https://coreos.com/etcd/) is interesting too.
 
 ### Back-end - Requirements
 * Your modified back-end needs three services, a HTTP server, a TCP server and the (third-party) service discovery service.
 * The TCP server registers its port in the service discovery
 * The TCP server generates the vehicle data and streams it over a TCP connection
-* The HTTP server, hosting the web client, connects to this TCP server and receives its data.
+* The HTTP server, hosting the web client, connects to this TCP server and receives its data
 
 ### Back-end - Up for more?
 Nice! Now that is working and if you still have some energy (and time ;) ) left, how about:
-*  make the HTTP server reconnect with the TCP server after the connection is dropped?
-*  putting your servers into docker images?
-
+* make the HTTP server reconnect with the TCP server after the connection is dropped (implement a reconnection strategy)
+* allow multiple HTTP servers to connect to you TCP server
+*  putting your servers into docker images
+* implement D3.js like data-visualisation in the front-end part
+* improve the Vehicle.js module! (it lacks re-reading it's source file after reading through it)
 
 ## The project structure
 The project structure is pretty straight forward. Below you can find some of the things you might be looking for.
