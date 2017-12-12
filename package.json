@@ -1,6 +1,6 @@
 {
   "name": "ViriCiti_Assignment",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Full webpack configured Node.js, Express, Socket.io, React and Less project",
   "main": "./src/server/index.js",
   "scripts": {
