@@ -31,10 +31,17 @@ Finally, open up your browser at
 
 
 ## The Assignment
-We have provided you with a starter kit that receives vehicle data over a socket connection in the front-end. This is all setup for you. The assignment is to use this live data stream to create a single page, data driven, real-time dashboard. We've provided you with a few parameters:
+We have provided you with a starter kit that receives vehicle data in the front-end over a socket connection. This is all setup for you. The assignment can be done from two perspectives: you can choose whatever you would like to do:
 
+1. Doing the assignment focused on **_front-end_**
+1. Doing the assignment focused on **_back-end_**
+
+More on this later.
+
+We've provided you with a few parameters:
 
 ### The data
+The assignment is based on a vehicle data generator. A stream of objects that looks like this:
 
 ```JS
 {
@@ -54,33 +61,58 @@ We have provided you with a starter kit that receives vehicle data over a socket
 * speed - The speed the vehicle was going in km/h
 * soc - The state of charge (battery) of the vehicle in %
 
-We would like to see how you can visualize this data for the user. What does the user want to see and how are you going to display this. Give the user real-time insights into his/her vehicle.
+Now choose what you would like to do, front-end of back-end work, and pick the appropriate assignment!
+## Front-end based assignment
+We would like to see how you can visualize the vehicle data for the end-user. What does the user want to see and how are you going to display this? Give the user real-time insights into his/her vehicle.
 
-We highly encourage you to use your creativity in this assingment. However, we do have some requirements it needs to meet.
+We highly encourage you to use your creativity in this assignment. However, we do have some requirements it needs to meet:
 
-### The requirements
-Your app needs to at least
+### Front-end - The requirements
+Your app needs to at least:
+
 * provide the user with useful insights in data through data visualizations (e.g. D3.js)
 * be modular (in React.js components)
 * have re-usable components and be coded DRY (Don't Repeat Yourself)
 * be fully responsive and mobile friendly
 * use Less in a structured way for styles
 
-#### Up for more?
+#### Front-end - Up for more?
 Cool! You could extend the app's functionality by:
-* Enrich dataset with different data sources (e.g. weather API)
-* Optimize page loading (perfomance)
-* Global state management
+* Enrich the data-set with different data sources (e.g. weather API)
+* Optimize page loading (performance)
+* Global state management, like using Redux.js
 * Service workers
 * Progressive Web App
-* Support from IE10
 
-### The project structure
+## Back-end based assignment
+You choose to leave the client-side JS app in the example application as it is and concentrate on the back-end. Awesome!
+
+The **Vehicle** data generator in the example application (in `src/server/lib/Vehicle.js`) is part of the node HTTP server and it's your task to make a separate service for this generator, so potentially more services could make use of it. The image below depicts the current and the preferred situation.
+
+![Architecture before and after](images/architecture.png)
+
+Move the data generator from `src/server/lib/vehicle.js`, which is now a node module included in the HTTP server, to another process: a TCP server. For the HTTP server to keep receiving the vehicle data, it needs to connect to  (as a TCP client) this new TCP server that is running the _vehicle data generator_. To make it a bit more interesting, the port on the TCP server should be an arbitrary port, so you will need to make use of some sort of service discovery. i.e. [Consul](www.consul.io) may be a good choice, but [etcd](https://coreos.com/etcd/) is interesting too.
+
+### Back-end - Requirements
+* Your modified back-end needs three services, a HTTP server, a TCP server and the (third-party) service discovery service.
+* The TCP server registers its port in the service discovery
+* The TCP server generates the vehicle data and streams it over a TCP connection
+* The HTTP server, hosting the web client, connects to this TCP server and receives its data
+
+### Back-end - Up for more?
+Nice! Now that is working and if you still have some energy (and time ;) ) left, how about:
+* make the HTTP server reconnect with the TCP server after the connection is dropped (implement a reconnection strategy)
+* allow multiple HTTP servers to connect to you TCP server
+*  putting your servers into docker images
+* implement D3.js like data-visualisation in the front-end part
+* improve the Vehicle.js module! (it lacks re-reading it's source file after reading through it)
+
+## The project structure
 The project structure is pretty straight forward. Below you can find some of the things you might be looking for.
 
 #### Node.js and Express server
 
-This project runs on a node server with Express. You can find the server's entry file here:
+This project runs on a node HTTP server using Express. You can find the server's entry file here:
 
 `src/server/index.js`
 
@@ -99,12 +131,24 @@ This project uses Less for styling. You can find the main Less file here:
 ## Read up material
 Looking to level up your knowledge and skills? These are some good articles/courses that you can check out.
 
+### Front-end
 * [Atomic Design](http://atomicdesign.bradfrost.com/chapter-2/)
 * [BEM](http://getbem.com/)
 * [LearnYouReact](https://github.com/workshopper/learnyoureact)
 * [LearnYouNode](https://github.com/workshopper/learnyounode)
 * [GitIt](https://github.com/jlord/git-it-electron)
 * [ExpressWorks](https://github.com/azat-co/expressworks)
+
+### Back-end
+
+* [Node Streams API](https://nodejs.org/api/stream.html)
+* [Streams & Back-pressure](https://www.transitions-now.com/2015/12/06/merging-time-series-data-streams-a-node-js-streams-case-part-2/)
+* [TCP node server](https://nodejs.org/api/net.html)
+* [Service Registry with consul](https://www.consul.io/) or [etcd](https://coreos.com/etcd/)
+* [Docker](https://www.docker.com/)
+
+### General
+* Learn [Node.js and it's modules](http://nodeschool.io/#workshoppers)
 
 ## Questions
 If you have any questions about he assignment or project setup feel free to contact me at <a href='mailto:d.bitter@viriciti.com'>d.bitter@viriciti.com</a> or come by the office. We're always ready to help.
