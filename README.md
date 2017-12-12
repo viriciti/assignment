@@ -111,7 +111,7 @@ Nice! Now that is working and if you still have some energy (and time ;) ) left,
 
 Still some time left?
 
-* Add some data-visualisation in the front-end part to actually see these vehicles drive on map
+* Add some data-visualisation in the front-end part to actually see these vehicles drive on a map using the GPS location
 
 ## The project file structure
 The project structure is pretty straight forward. Below you can find some of the things you might be looking for.
