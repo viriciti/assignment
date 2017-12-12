@@ -87,7 +87,7 @@ Cool! You could extend the app's functionality by:
 ## Back-end based assignment
 You choose to leave the client-side JS app in the example application as it is and concentrate on the back-end. Awesome!
 
-The **Vehicle** data generator in the example application (in `src/server/lib/Vehicle.js`) is part of the node HTTP server and it's your task to make a separate service for this generator, so potentially more services could make use of it. The image below depicts the current and the preferred situation.
+In the example application you will find a **Vehicle** data generator in `src/server/lib/Vehicle.js`. This generator is part of a node HTTP server. Now, it is your task to create a separate service for this generator, so that, potentially, more services could make use of it. The image below depicts the current situation and the preferred situation.
 
 ![Architecture before and after](images/architecture.png)
 
@@ -104,7 +104,6 @@ Nice! Now that is working and if you still have some energy (and time ;) ) left,
 * make the HTTP server reconnect with the TCP server after the connection is dropped (implement a reconnection strategy)
 * allow multiple HTTP servers to connect to you TCP server
 *  putting your servers into docker images
-* implement D3.js like data-visualisation in the front-end part
 * improve the Vehicle.js module! (it lacks re-reading it's source file after reading through it)
 
 ## The project structure
