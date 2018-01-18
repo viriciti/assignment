@@ -99,13 +99,13 @@ Move the data generator from `src/server/lib/vehicle.js`, which is now a node mo
 * The TCP server registers its port in the service discovery
 * The TCP server generates the vehicle data and streams it over a TCP connection
 * The HTTP server, hosting the web client, connects to this TCP server and receives its data
+* Make the HTTP server reconnect with the TCP server after the connection is dropped (implement a reconnection strategy)
+* Run more vehicles by increasing the number of instances of your Vehicle Data Generator service (and stream them to the HTTP server)
+* Allow multiple HTTP servers to connect to your vehicle TCP server(s)
 
 #### Back-end - Up for more?
 Nice! Now that is working and if you still have some energy (and time ;) ) left, how about:
 
-* Make the HTTP server reconnect with the TCP server after the connection is dropped (implement a reconnection strategy)
-* Run more vehicles by increasing the number of instances of your Vehicle Data Generator service (and stream them to the HTTP server)
-* Allow multiple HTTP servers to connect to your vehicle TCP server(s)
 * Improve the Vehicle.js module! (it lacks re-reading it's source file after reading through it all)
 * Dockerize all your services
 
